@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-sm d-flex align-items-center justify-content-center flex-column" style="height: 100vh;">
+    {% if errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        {{ success }}
+    </div>
+    {% endif %}
+
+    <h1>Cadastrar Veículo</h1>
+    <form action="{% url 'criar_veiculo' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="mb-3">
+                {{ field }}
+            </div>
+        {% endfor %}
+        
+        <input type="reset" value="Limpar">
+        <br>
+        <br>
+        <input type="submit" class="btn btn-primary w-100 py-2" value="Cadastrar">
+    </form>
+{% endblock %}
