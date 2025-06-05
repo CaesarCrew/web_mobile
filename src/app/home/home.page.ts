@@ -10,3 +10,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/stan
 export class HomePage {
   constructor() {}
 }
+/* public instancia: { username: string; password: string } = {
+    username: '',
+    password: ''
+  }; */
