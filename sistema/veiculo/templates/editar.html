@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container w-25 py-3">
+    <h2 class="mb-4">Editar Veículo</h2>
+
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+        {{ form.non_field_errors }}
+        <div class="mb-3">
+            {{ form.marca.errors }}
+            <label for="{{ form.subject.id_for_label }}">Marca:</label>
+            {{ form.marca }}
+        </div>
+        <div class="mb-3">
+            {{ form.modelo.errors }}
+            <label for="{{ form.message.id_for_label }}">Modelo:</label>
+            {{ form.modelo }}
+        </div>
+        <div class="mb-3">
+            {{ form.ano.errors }}
+            <label for="{{ form.ano.id_for_label }}">Ano:</label>
+            {{ form.ano }}
+        </div>
+        <div class="mb-3">
+            {{ form.cor.errors }}
+            <label for="{{ form.cor.id_for_label }}">Cor:</label>
+            {{ form.cor }}
+        </div>
+        <div class="mb-3">
+            {{ form.combustivel.errors }}
+            <label for="{{ form.combustivel.id_for_label }}">combustivel:</label>
+            {{ form.combustivel }}
+        </div>
+        <div class="mb-3">
+            {{ form.foto.errors }}
+            <label for="">Insira a foto do veículo (opcional):</label>
+            {{ form.foto }}
+        </div>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{% url 'listar_veiculo' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
