@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [submit]="autenticarUsuario()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Senha" type="password" name="senha" [(ngModel)]="usuario.senha" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">Entrar</ion-button>
+    </ion-list>
+    <ion-button expand="full" fill="outline" (click)="autenticarUsuario">Autenticar</ion-button>
+  </form>
+</ion-content>
