@@ -10,5 +10,6 @@ urlpatterns = [
     path('deletar/<int:pk>/', login_required(VeiculoDeleteView.as_view(), login_url=''), name='deletar_veiculo'),
     # path('listar_alt/', ListarViewAlt.as_view(), name='listar_veiculo_alt'),
     path('fotos/<str:arquivo>/', FotoVeiculo.as_view(), name='foto_veiculo'),
-    path('api/listar/', VeiculoAPIListar.as_view(), name='api_listar_veiculo'),
+    path('api/', VeiculoAPIListar.as_view(), name='api_listar_veiculo'),
+    path('api/<int:pk>/', VeiculoAPIDelete.as_view(), name='api_veiculo_destroy'),
 ]

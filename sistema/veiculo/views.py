@@ -52,9 +52,23 @@ class FotoVeiculo(View):
             return Http404('<h1>Veículo não encontrado</h1>')
 
 class VeiculoAPIListar(ListAPIView):
-    serializer_classes = VeiculoSerializer
+    serializer_class = VeiculoSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Veiculo.objects.all()
+
+class VeiculoAPIDelete(DeleteView):
+    model = Veiculo
+    serializer_class = VeiculoSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            veiculo = self.get_object()
+            veiculo.delete()
+            return Response(status=204)
+        except ObjectDoesNotExist:
+            return Response(status=404)
